@@ -6,6 +6,5 @@ import partytown from '@astrojs/partytown';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://wylie.github.io',
-  base: 'blog',
   integrations: [partytown()]
 });
