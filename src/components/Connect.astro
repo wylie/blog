@@ -1,0 +1,43 @@
+---
+const { title, url, icon } = Astro.props;
+import emailIcon from './src/assets/email.png';
+import githubIcon from './src/assets/github.png';
+import goodreadsIcon from './src/assets/goodreads.png';
+import linkedinIcon from './src/assets/linkedin.png';
+
+// import '../pages/variables.css';
+import './src/pages/variables.css';
+
+let iconSrc;
+switch (icon) {
+  case 'email':
+    iconSrc = emailIcon.src;
+    break;
+  case 'github':
+    iconSrc = githubIcon.src;
+    break;
+  case 'goodreads':
+    iconSrc = goodreadsIcon.src;
+    break;
+  case 'linkedin':
+    iconSrc = linkedinIcon.src;
+    break;
+}
+---
+
+<a href={url} target="_blank" rel="noopener noreferrer" title={title}>
+  <img src={iconSrc} class="icon" alt={title} />
+</a>
+
+<style>
+  a {
+    line-height: 0;
+  }
+  .icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    fill: var(--fill-color);
+    transition: all .1s;
+    filter: invert(23%) sepia(11%) saturate(749%) hue-rotate(145deg) brightness(92%) contrast(92%);
+  }
+</style>
