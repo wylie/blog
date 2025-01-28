@@ -1,154 +1,23 @@
 ---
-import Meta from '../components/Meta.astro';
-import Favicon from '../components/Favicon.astro';
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
 import About from '../components/About.astro';
-import Connect from '../components/Connect.astro';
-import Project from '../components/Project.astro';
-import projects from '../assets/projects.js';
-import clones from '../assets/clones.js';
 
 import './variables.css';
 
-function getRandomClone() {
-  const randomIndex = Math.floor(Math.random() * clones.clonesList.length);
-  return clones.clonesList[randomIndex];
-}
-
 ---
-<title>Wylie Fisher</title>
-<Meta />
-<Favicon />
-
-<div class="layout">
-	<header>
-		<h1>Wylie Fisher</h1>
-		<h3>
-			Front-End Web Developer
-		</h3>
-	</header>
+<Layout>
+  <Navigation />
 	<main>
 		<About />
-		<section class="projects">
-			<h2>Projects</h2>
-			{projects.map((data) => 
-				<Project
-					title={data.title},
-					description={data.description},
-					link={data.link},
-					skills={data.skills}
-				/>
-			)}
-		</section>
-		<section class="connect">
-			<h2>Connect</h2>
-			<Connect url="mailto:me@wyliefisher.com" title="Email me!" icon="email" />
-			<Connect url="https://github.com/wylie" title="More work on GitHub!" icon="github" />
-			<Connect url="https://www.linkedin.com/in/wyliefisher/" title="Let's connect on Linkedin!" icon="linkedin" />
-			<Connect url="https://www.goodreads.com/wyliefisher" title="Read with me on Goodreads!" icon="goodreads" />
-		</section>
 	</main>
-	<footer>
-		<p>{getRandomClone()}</p>
-	</footer>
-</div>
+</Layout>
 
 <style>
-	#root {
-		display: grid;
-	}
-	.layout {
-		display: grid;
-		grid-template-rows: auto 1fr auto;
-		row-gap: var(--gap);
-		width: 75%;
-		max-width: 650px;
-		justify-self: center;
-		transition: width .2s;
-		margin: auto;
-	}
-	@media (max-width: 600px) {
-		.layout {
-			width: 90%;
-		}
-	}
-	/* HEADER */
-	header {
-		width: 100%;
-		border-bottom: 3px solid var(--border-color);
-		padding-bottom: 1rem;
-	}
-	header h3 {
-		display: flex;
-		justify-content: space-between;
-	}
-	header button {
-		display: flex;
-		padding: 0;
-		border: 0;
-		background: transparent;
-		cursor: pointer;
-	}
-	header .icon {
-		filter: invert(23%) sepia(11%) saturate(749%) hue-rotate(145deg) brightness(92%) contrast(92%);
-		height: 1.5rem;
-	}
-	.dark header .icon {
-		filter: invert(90%) sepia(0%) saturate(0%) hue-rotate(180deg) brightness(95%) contrast(90%);
-	}
-	header .icon:hover {
-		transform: scale(1.02);
-	}
-	header .icon:active {
-		transform: scale(0.98);
-	}
 	/* CENTER */
 	main {
 		display: flex;
 		flex-direction: column;
 		gap: 5rem;
 	}
-	/* FOOTER */
-	footer {
-		padding: var(--gap) 0;
-		border-top: 3px solid var(--border-color);
-	}
-	footer p {
-		font-size: var(--fontSize-secondary);
-		font-style: italic;
-	}
-	.connect {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-  }
-  .connect h2 {
-    flex: 1 1 100%;
-  }
-
-	.projects {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    grid-template-areas:
-      "title"
-      "project"
-      "project"
-      "project"
-      "project";
-    ;
-  }
-  .projects h2 {
-    grid-area: title;
-  }
-  @media (min-width: 600px) {
-    .projects {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "title title"
-        "project project"
-        "project project";
-      ;
-    }
-  }
-
 </style>

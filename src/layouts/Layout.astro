@@ -1,0 +1,114 @@
+---
+import Meta from '../components/Meta.astro';
+import Favicon from '../components/Favicon.astro';
+import Connect from '../components/Connect.astro';
+import clones from '../assets/clones.js';
+
+function getRandomClone() {
+  const randomIndex = Math.floor(Math.random() * clones.clonesList.length);
+  return clones.clonesList[randomIndex];
+}
+
+import '../pages/variables.css';
+
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<title>Wylie Fisher</title>
+		<Meta />
+		<Favicon />
+	</head>
+	<body>
+		<div class="layout">
+			<header>
+				<h1>Wylie Fisher</h1>
+				<h3>
+					Front-End Web Developer
+				</h3>
+			</header>
+			<slot />
+			<section class="connect">
+				<h2>Connect</h2>
+				<Connect url="mailto:me@wyliefisher.com" title="Email me!" icon="email" />
+				<Connect url="https://github.com/wylie" title="More work on GitHub!" icon="github" />
+				<Connect url="https://www.linkedin.com/in/wyliefisher/" title="Let's connect on Linkedin!" icon="linkedin" />
+				<Connect url="https://www.goodreads.com/wyliefisher" title="Read with me on Goodreads!" icon="goodreads" />
+			</section>
+			<footer>
+				<p>{getRandomClone()}</p>
+			</footer>
+		</div>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+	body {
+		display: grid;
+	}
+	/* HEADER */
+	header {
+		width: 100%;
+		border-bottom: 3px solid var(--border-color);
+		padding-bottom: 1rem;
+	}
+	header h3 {
+		display: flex;
+		justify-content: space-between;
+	}
+	header button {
+		display: flex;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+	}
+	header .icon {
+		filter: invert(23%) sepia(11%) saturate(749%) hue-rotate(145deg) brightness(92%) contrast(92%);
+		height: 1.5rem;
+	}
+	header .icon:hover {
+		transform: scale(1.02);
+	}
+	header .icon:active {
+		transform: scale(0.98);
+	}
+	.layout {
+		display: grid;
+		grid-template-rows: auto auto 1fr auto;
+		row-gap: var(--gap);
+		width: 75%;
+		max-width: 650px;
+		justify-self: center;
+		transition: width .2s;
+	}
+	@media (max-width: 600px) {
+		.layout {
+			width: 90%;
+		}
+	}
+	.connect {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+  }
+  .connect h2 {
+    flex: 1 1 100%;
+  }
+	/* FOOTER */
+	footer {
+		padding: var(--gap) 0;
+		border-top: 3px solid var(--border-color);
+	}
+	footer p {
+		font-size: var(--fontSize-secondary);
+		font-style: italic;
+	}
+
+</style>
