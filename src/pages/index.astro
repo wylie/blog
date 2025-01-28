@@ -1,4 +1,6 @@
 ---
+import Meta from '../components/Meta.astro';
+import Favicon from '../components/Favicon.astro';
 import About from '../components/About.astro';
 import Connect from '../components/Connect.astro';
 import Project from '../components/Project.astro';
@@ -6,15 +8,8 @@ import Project from '../components/Project.astro';
 import './variables.css';
 ---
 <title>Wylie Fisher</title>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Wylie Fisher" />
-<meta property="og:image" content="%PUBLIC_URL%/share-image.png" />
-<meta property="og:image:alt" content="A drawing of Wylie under the name Wylie Fisher" />
-<meta property="og:description" content="Ahoy! I'm Wylie Fisher, a dad, developer, and outdoor enthusiast." />
-<meta property="og:locale" content="en_US" />
-<meta property="og:site_name" content="Wylie Fisher" />
-<link rel="icon" href="/favicon.ico" />
+<Meta />
+<Favicon />
 
 <div class="layout">
 	<header>
