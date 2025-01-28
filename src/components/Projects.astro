@@ -1,28 +1,59 @@
 ---
 const { link, title, description, skills } = Astro.props;
+import projects from '../assets/projects.js';
 import '../pages/variables.css';
 ---
 
-<article class="project">
-  <a href={link} class="link" target="_blank" rel="noreferrer" title={title}>
-    <h3 class="title">
-      {title}
-      <p class="url">{link}</p>
-    </h3>
-    <p class="description">{description}</p>
-    <p class="skills">
-      {
-        skills.map((skill) => {
-          return (
-            <span class="skill">{skill}</span>
-          )
-        })
-      }
-    </p>
-  </a>
-</article>
+<section class="projects">
+  <h2>Projects</h2>
+  {projects.map((data) => 
+    <article class="project">
+      <a href={link} class="link" target="_blank" rel="noreferrer" title={title}>
+        <h3 class="title">
+          {data.title}
+          <p class="url">{data.link}</p>
+        </h3>
+        <p class="description">{data.description}</p>
+        <p class="skills">
+          {
+            data.skills.map((skill) => {
+              return (
+                <span class="skill">{skill}</span>
+              )
+            })
+          }
+        </p>
+      </a>
+    </article>
+    )}
+</section>
 
 <style>
+  .projects {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    grid-template-areas:
+      "title"
+      "project"
+      "project"
+      "project"
+      "project";
+    ;
+  }
+  .projects h2 {
+    grid-area: title;
+  }
+  @media (min-width: 600px) {
+    .projects {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "title title"
+        "project project"
+        "project project";
+      ;
+    }
+  }
   .project {
     display: grid;
     padding: 1rem;
