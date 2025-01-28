@@ -71,14 +71,6 @@ version 0.2.6b
 volume 256
 
 
-// Location of pico-8's root folder
-root_path /Users/wylie/Repos/blog/carts/
-
-
-// Location of cartridge save data
-cdata_path /Users/wylie/Repos/blog/cdata/
-
-
 // Specify which player index joystick control begins at (0..7)
 joystick_index 0
 
