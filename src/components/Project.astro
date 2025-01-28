@@ -1,7 +1,6 @@
 ---
 const { link, title, description, skills } = Astro.props;
 import '../pages/variables.css';
-
 ---
 
 <article class="project">
@@ -12,12 +11,13 @@ import '../pages/variables.css';
     </h3>
     <p class="description">{description}</p>
     <p class="skills">
-      {skills}
-      <!-- {
-        skills.map((skill, index) => (
-          <span class="skill" key={index}>{skill}</span>
-        ))
-      } -->
+      {
+        skills.map((skill) => {
+          return (
+            <span class="skill">{skill}</span>
+          )
+        })
+      }
     </p>
   </a>
 </article>
@@ -60,7 +60,7 @@ import '../pages/variables.css';
     font-size: 12px;
     margin-top: 1rem;
   }
-  /* .project .skill {
+  .project .skill {
     background-color: var(--background-color);
     padding: .25rem .5rem;
     border-radius: 10px;
@@ -68,5 +68,5 @@ import '../pages/variables.css';
   }
   .project .skill:not(:first-child) {
     margin-left: .3rem;
-  } */
+  }
 </style>
