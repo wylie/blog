@@ -4,8 +4,15 @@ import Favicon from '../components/Favicon.astro';
 import About from '../components/About.astro';
 import Connect from '../components/Connect.astro';
 import Project from '../components/Project.astro';
+import clones from '../assets/clones.js';
 
 import './variables.css';
+
+function getRandomClone() {
+  const randomIndex = Math.floor(Math.random() * clones.clonesList.length);
+  return clones.clonesList[randomIndex];
+}
+
 ---
 <title>Wylie Fisher</title>
 <Meta />
@@ -56,8 +63,8 @@ import './variables.css';
 		</section>
 	</main>
 	<footer>
-		<p>quote</p>
-		<!-- <p>{getRandomClone()}</p> -->
+		<!-- <p>quote</p> -->
+		<p>{getRandomClone()}</p>
 	</footer>
 </div>
 
