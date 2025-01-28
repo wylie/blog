@@ -5,7 +5,6 @@ import githubIcon from '../assets/github.png';
 import goodreadsIcon from '../assets/goodreads.png';
 import linkedinIcon from '../assets/linkedin.png';
 
-// import '../pages/variables.css';
 import '../pages/variables.css';
 
 let iconSrc;
@@ -25,15 +24,15 @@ switch (icon) {
 }
 ---
 
-<a href={url} target="_blank" rel="noopener noreferrer" title={title}>
+<a class="connect-link" href={url} target="_blank" rel="noopener noreferrer" title={title}>
   <img src={iconSrc} class="icon" alt={title} />
 </a>
 
 <style>
-  a {
+  .connect-link {
     line-height: 0;
   }
-  .icon {
+  .connect-link .icon {
     width: 2.25rem;
     height: 2.25rem;
     fill: var(--fill-color);
