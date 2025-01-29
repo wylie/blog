@@ -29,3 +29,4 @@ pnpm-debug.log*
 .netlify
 
 node_modules
+.env.development
